@@ -5,12 +5,19 @@
 
 <p align = "center">
   Examples: <br/>
+  
+  <br/> <br/> <br/>
+  
   f(x) = x * sin(x) * cos(x) <br/>
   <img width="505" height="425" src="https://github.com/Razvan48/Mathematical-Functions-Visualizer/blob/main/Demo/Mathematical Functions Visualizer Demo0.png"> <br/>
+  
   <br/> <br/> <br/> <br/> <br/>
+  
   f(x) = sqrt(sin(x) * x) <br/>
   <img width="505" height="425" src="https://github.com/Razvan48/Mathematical-Functions-Visualizer/blob/main/Demo/Mathematical Functions Visualizer Demo1.png"> <br/>
+  
   <br/> <br/> <br/> <br/> <br/>
+  
   f(x) = sqrt(x) + x * sin(x) - x * cos(x) <br/>
   <img width="505" height="425" src="https://github.com/Razvan48/Mathematical-Functions-Visualizer/blob/main/Demo/Mathematical Functions Visualizer Demo2.png"> <br/>
 </p>
