@@ -4,9 +4,9 @@
 &emsp; It is able to draw the graph of any given function. <br/>
 
 <p align = "center">
-  <img width="505" height="425" src="https://github.com/Razvan48/Mathematical-Functions-Visualizer/blob/main/Demo/Mathematical Functions Visualizer Demo0.gif">
-  <img width="505" height="425" src="https://github.com/Razvan48/Mathematical-Functions-Visualizer/blob/main/Demo/Mathematical Functions Visualizer Demo1.gif">
-  <img width="505" height="425" src="https://github.com/Razvan48/Mathematical-Functions-Visualizer/blob/main/Demo/Mathematical Functions Visualizer Demo2.gif">
+  <img width="505" height="425" src="https://github.com/Razvan48/Mathematical-Functions-Visualizer/blob/main/Demo/Mathematical Functions Visualizer Demo0.png">
+  <img width="505" height="425" src="https://github.com/Razvan48/Mathematical-Functions-Visualizer/blob/main/Demo/Mathematical Functions Visualizer Demo1.png">
+  <img width="505" height="425" src="https://github.com/Razvan48/Mathematical-Functions-Visualizer/blob/main/Demo/Mathematical Functions Visualizer Demo2.png">
 </p>
 
 **Controls:** <br/>
