@@ -4,13 +4,13 @@
 &emsp; It is able to draw the graph of any given function. <br/>
 
 <p align = "center">
-  Examples:
-  f(x) = x * sin(x) * cos(x)
-  <img width="505" height="425" src="https://github.com/Razvan48/Mathematical-Functions-Visualizer/blob/main/Demo/Mathematical Functions Visualizer Demo0.png">
-  f(x) = sqrt(sin(x) * x)
-  <img width="505" height="425" src="https://github.com/Razvan48/Mathematical-Functions-Visualizer/blob/main/Demo/Mathematical Functions Visualizer Demo1.png">
-  f(x) = sqrt(x) + x * sin(x) - x * cos(x)
-  <img width="505" height="425" src="https://github.com/Razvan48/Mathematical-Functions-Visualizer/blob/main/Demo/Mathematical Functions Visualizer Demo2.png">
+  Examples: <br/>
+  f(x) = x * sin(x) * cos(x) <br/>
+  <img width="505" height="425" src="https://github.com/Razvan48/Mathematical-Functions-Visualizer/blob/main/Demo/Mathematical Functions Visualizer Demo0.png"> <br/>
+  f(x) = sqrt(sin(x) * x) <br/>
+  <img width="505" height="425" src="https://github.com/Razvan48/Mathematical-Functions-Visualizer/blob/main/Demo/Mathematical Functions Visualizer Demo1.png"> <br/>
+  f(x) = sqrt(x) + x * sin(x) - x * cos(x) <br/>
+  <img width="505" height="425" src="https://github.com/Razvan48/Mathematical-Functions-Visualizer/blob/main/Demo/Mathematical Functions Visualizer Demo2.png"> <br/>
 </p>
 
 **Controls:** <br/>
