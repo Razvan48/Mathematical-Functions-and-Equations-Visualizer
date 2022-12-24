@@ -1,4 +1,4 @@
-# Mathematical-Functions-Visualizer | _C++, OpenGL, Mathematics_
+# Mathematical-Functions-Visualizer | _C++, OpenGL_
 
 &emsp; This is a simple visualizer for mathematical functions. <br/>
 &emsp; It is able to draw the graph of any given function. <br/>
