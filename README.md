@@ -18,6 +18,6 @@
 
 **Controls:** <br/>
 
-&emsp; WASD for moving the camera around <br/>
+&emsp; WASD for moving the camera around and for being able to look at other values of the function <br/>
 &emsp; Button Q and button E for zooming in/out <br/>
 &emsp; Esc for closing the application <br/>
