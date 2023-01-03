@@ -1,4 +1,4 @@
-# Mathematical-Functions-Visualizer | _C++, OpenGL_
+# Mathematical-Functions-Visualizer
 
 &emsp; This is a simple visualizer for mathematical functions. <br/>
 &emsp; It is able to draw the graph of any given function. <br/>
@@ -17,7 +17,6 @@
 </p>
 
 **Controls:** <br/>
-
-&emsp; WASD for moving the camera around and for being able to look at other values of the function <br/>
-&emsp; Button Q and button E for zooming in/out <br/>
-&emsp; Esc for closing the application <br/>
+- WASD for moving the camera around and for being able to look at other values of the function <br/>
+- Button Q and button E for zooming in/out <br/>
+- Esc for closing the application <br/>
