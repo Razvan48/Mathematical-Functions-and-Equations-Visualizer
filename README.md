@@ -14,6 +14,12 @@
   <br/> <br/> <br/> <br/> <br/>
   f(x) = sqrt(x) + x * sin(x) - x * cos(x) <br/>
   <img width="505" height="425" src="https://github.com/Razvan48/Mathematical-Functions-Visualizer/blob/main/Demo/Mathematical Functions Visualizer Demo2.png"> <br/>
+  <br/> <br/> <br/> <br/> <br/>
+  (x - 3) * (x - 3) + (y - 5) * (y - 5) - 200 = 0 (circle equation)
+  <img width="505" height="425" src="https://github.com/Razvan48/Mathematical-Functions-Visualizer/blob/main/Demo/Mathematical Functions Visualizer Demo3.png"> <br/>
+    <br/> <br/> <br/> <br/> <br/>
+  (x - 5) * (x - 5) / 7 + (y - 5) * (y - 5) - 200 = 0 (ellipse equation)
+  <img width="505" height="425" src="https://github.com/Razvan48/Mathematical-Functions-Visualizer/blob/main/Demo/Mathematical Functions Visualizer Demo4.png"> <br/>
 </p>
 
 **Controls:** <br/>
