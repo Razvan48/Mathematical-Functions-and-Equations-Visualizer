@@ -1,4 +1,6 @@
 ﻿  main.cpp
 C:\Users\razvan\Documents\GitHub\Mathematical-Functions-Visualizer\main.cpp(349,57): warning C4244: 'argument': conversion from 'const double' to 'int', possible loss of data
 C:\Users\razvan\Documents\GitHub\Mathematical-Functions-Visualizer\main.cpp(349,43): warning C4244: 'argument': conversion from 'const double' to 'int', possible loss of data
+  LINK : C:\Users\razvan\Documents\GitHub\Mathematical-Functions-Visualizer\Debug\Mathematical Functions Visualizer.exe not found or not built by the last incremental link; performing full link
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
   Mathematical Functions Visualizer.vcxproj -> C:\Users\razvan\Documents\GitHub\Mathematical-Functions-Visualizer\Debug\Mathematical Functions Visualizer.exe
