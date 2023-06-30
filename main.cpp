@@ -80,6 +80,11 @@ void updateDeltaTime()
 
 int POINTS = 1000;
 
+int POINTS_X = 1024;
+int POINTS_Y = 1024;
+
+double EPSILON_EQUATION = 0.001;
+
 void handleInput(GLFWwindow* window, Camera* camera)
 {
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
@@ -105,15 +110,45 @@ void handleInput(GLFWwindow* window, Camera* camera)
         camera->scale = min(camera->scale, camera->MAX_SCALE);
     }
 
-    if (glfwGetKey(window, GLFW_KEY_P) == GLFW_PRESS)
+    if (glfwGetKey(window, GLFW_KEY_O) == GLFW_PRESS)
     {
         POINTS -= 10;
         POINTS = max(POINTS, 0);
     }
-    if (glfwGetKey(window, GLFW_KEY_O) == GLFW_PRESS)
+    if (glfwGetKey(window, GLFW_KEY_P) == GLFW_PRESS)
     {
         POINTS += 10;
         POINTS = min(POINTS, 10000);
+    }
+
+    if (glfwGetKey(window, GLFW_KEY_N) == GLFW_PRESS)
+    {
+        POINTS_X -= 10;
+        POINTS_X = max(POINTS_X, 0);
+
+        POINTS_Y -= 10;
+        POINTS_Y = max(POINTS_Y, 0);
+    }
+    if (glfwGetKey(window, GLFW_KEY_M) == GLFW_PRESS)
+    {
+        POINTS_X += 10;
+        POINTS_X = min(POINTS_X, 10000);
+
+        POINTS_Y += 10;
+        POINTS_Y = min(POINTS_Y, 10000);
+    }
+
+    if (glfwGetKey(window, GLFW_KEY_Y) == GLFW_PRESS)
+    {
+        EPSILON_EQUATION -= 0.01;
+
+        EPSILON_EQUATION = max(EPSILON_EQUATION, 0.0);
+    }
+    if (glfwGetKey(window, GLFW_KEY_X) == GLFW_PRESS)
+    {
+        EPSILON_EQUATION += 0.01;
+
+        EPSILON_EQUATION = min(EPSILON_EQUATION, 10000.0);
     }
 }
 
@@ -167,34 +202,32 @@ void drawAxes(double x1, double y1, double x2, double y2)
 
 int colourPath;
 
-void draw(Camera* camera)
+void drawFunction(Camera* camera)
 {
     axes.clear();
     vertices.clear();
     origin.clear();
 
+    double distXWindow = WINDOW_WIDTH / (1.0 * POINTS - 1.0);
+
+    double crtXWindow = -WINDOW_WIDTH / 2.0;
+    double antXWindow = -WINDOW_WIDTH / 2.0;
+
+    for (int i = 1; i <= POINTS; i++)
     {
-        double distXWindow = WINDOW_WIDTH / (1.0 * POINTS - 1.0);
+        double crtX = crtXWindow / (WINDOW_WIDTH / 2.0) * camera->scale + camera->x;
+        double antX = antXWindow / (WINDOW_WIDTH / 2.0) * camera->scale + camera->x;
 
-        double crtXWindow = -WINDOW_WIDTH / 2.0;
-        double antXWindow = -WINDOW_WIDTH / 2.0;
+        double crtY = function(crtX);
+        double antY = function(antX);
 
-        for (int i = 1; i <= POINTS; i++)
-        {
-            double crtX = crtXWindow / (WINDOW_WIDTH / 2.0) * camera->scale + camera->x;
-            double antX = antXWindow / (WINDOW_WIDTH / 2.0) * camera->scale + camera->x;
+        double antYWindow = (antY - camera->y) / camera->scale * WINDOW_HEIGHT / 2.0;
+        double crtYWindow = (crtY - camera->y) / camera->scale * WINDOW_HEIGHT / 2.0;
 
-            double crtY = function(crtX);
-            double antY = function(antX);
+        drawLine(antXWindow, antYWindow, crtXWindow, crtYWindow);
 
-            double antYWindow = (antY - camera->y) / camera->scale * WINDOW_HEIGHT / 2.0;
-            double crtYWindow = (crtY - camera->y) / camera->scale * WINDOW_HEIGHT / 2.0;
-
-            drawLine(antXWindow, antYWindow, crtXWindow, crtYWindow);
-
-            antXWindow = crtXWindow;
-            crtXWindow += distXWindow;
-        }
+        antXWindow = crtXWindow;
+        crtXWindow += distXWindow;
     }
 
     drawAxes(((camera->x - camera->scale) - camera->x) / camera->scale * WINDOW_WIDTH / 2.0, -camera->y / camera->scale * WINDOW_HEIGHT / 2.0, ((camera->x + camera->scale) - camera->x) / camera->scale * WINDOW_WIDTH / 2.0, -camera->y / camera->scale * WINDOW_HEIGHT / 2.0);
@@ -218,6 +251,79 @@ void draw(Camera* camera)
         glUniform3f(colourPath, 1.0, 0.0, 0.0);
 
         glDrawArrays(GL_LINES, 0, vertices.size() / 2);
+    }
+
+    glBufferData(GL_ARRAY_BUFFER, sizeof(double) * origin.size(), &(origin.front()), GL_DYNAMIC_DRAW);
+
+    glUniform3f(colourPath, 1.0, 0.0, 0.0);
+
+    glDrawArrays(GL_POINTS, 0, origin.size() / 2);
+}
+
+void drawPoint(double x, double y)
+{
+    vertices.emplace_back(x);
+    vertices.emplace_back(y);
+}
+
+bool equation(double x, double y)
+{
+    //return abs((x - 3) * (x - 3) + (y - 5) * (y - 5) - 200) < EPSILON_EQUATION;
+    return abs((x - 5) * (x - 5) / 7 + (y - 5) * (y - 5) - 200) < EPSILON_EQUATION;
+}
+
+void drawEquation(Camera* camera)
+{
+    axes.clear();
+    vertices.clear();
+    origin.clear();
+
+    double distXWindow = WINDOW_WIDTH / (1.0 * POINTS_X - 1.0);
+    double distYWindow = WINDOW_HEIGHT / (1.0 * POINTS_Y - 1.0);
+
+    double crtXWindow = -WINDOW_WIDTH / 2.0;
+
+    for (int i = 0; i < POINTS_X; i++)
+    {
+        double crtYWindow = -WINDOW_HEIGHT / 2.0;
+
+        for (int j = 0; j < POINTS_Y; j++)
+        {
+            double crtX = crtXWindow / (WINDOW_WIDTH / 2.0) * camera->scale + camera->x;
+            double crtY = crtYWindow / (WINDOW_HEIGHT / 2.0) * camera->scale + camera->y;
+
+            if (equation(crtX, crtY))
+            {
+                drawPoint(crtXWindow, crtYWindow);
+            }
+
+            crtYWindow += distYWindow;
+        }
+
+        crtXWindow += distXWindow;
+    }
+
+    drawAxes(((camera->x - camera->scale) - camera->x) / camera->scale * WINDOW_WIDTH / 2.0, -camera->y / camera->scale * WINDOW_HEIGHT / 2.0, ((camera->x + camera->scale) - camera->x) / camera->scale * WINDOW_WIDTH / 2.0, -camera->y / camera->scale * WINDOW_HEIGHT / 2.0);
+    drawAxes(-camera->x / camera->scale * WINDOW_WIDTH / 2.0, ((camera->y - camera->scale) - camera->y) / camera->scale * WINDOW_HEIGHT / 2.0, -camera->x / camera->scale * WINDOW_WIDTH / 2.0, ((camera->y + camera->scale) - camera->y) / camera->scale * WINDOW_HEIGHT / 2.0);
+
+    drawOrigin(-camera->x / camera->scale * WINDOW_WIDTH / 2.0, -camera->y / camera->scale * WINDOW_HEIGHT / 2.0);
+
+    if (axes.size() > 0)
+    {
+        glBufferData(GL_ARRAY_BUFFER, sizeof(double) * axes.size(), &(axes.front()), GL_DYNAMIC_DRAW);
+
+        glUniform3f(colourPath, 1.0, 1.0, 1.0);
+
+        glDrawArrays(GL_LINES, 0, axes.size() / 2);
+    }
+
+    if (vertices.size() > 0)
+    {
+        glBufferData(GL_ARRAY_BUFFER, sizeof(double) * vertices.size(), &(vertices.front()), GL_DYNAMIC_DRAW);
+
+        glUniform3f(colourPath, 1.0, 0.0, 0.0);
+
+        glDrawArrays(GL_POINTS, 0, vertices.size() / 2);
     }
 
     glBufferData(GL_ARRAY_BUFFER, sizeof(double) * origin.size(), &(origin.front()), GL_DYNAMIC_DRAW);
@@ -291,7 +397,8 @@ int main()
 
         handleInput(window, camera);
 
-        draw(camera);
+        //drawFunction(camera);
+        drawEquation(camera);
 
         displayCoordinates(camera);
 

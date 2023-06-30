@@ -1,1 +1,4 @@
-﻿  Mathematical Functions Visualizer.vcxproj -> C:\Users\razvan\Documents\GitHub\Mathematical-Functions-Visualizer\Debug\Mathematical Functions Visualizer.exe
+﻿  main.cpp
+C:\Users\razvan\Documents\GitHub\Mathematical-Functions-Visualizer\main.cpp(349,57): warning C4244: 'argument': conversion from 'const double' to 'int', possible loss of data
+C:\Users\razvan\Documents\GitHub\Mathematical-Functions-Visualizer\main.cpp(349,43): warning C4244: 'argument': conversion from 'const double' to 'int', possible loss of data
+  Mathematical Functions Visualizer.vcxproj -> C:\Users\razvan\Documents\GitHub\Mathematical-Functions-Visualizer\Debug\Mathematical Functions Visualizer.exe
